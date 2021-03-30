@@ -7,7 +7,7 @@ import {
   Link
 } from "react-router-dom";
 import Signup from './Signup'
-import Login from './Login'
+import Signin from './Signin'
 import StartChat from './StartChat'
 import Chats from './Chats'
 
@@ -18,8 +18,8 @@ export default function App() {
         <Route exact path="/signup">
           <Signup />
         </Route>
-        <Route exact path="/login">
-          <Login />
+        <Route exact path="/signin">
+          <Signin />
         </Route>
         <Route exact path="/start-chat">
           <StartChat />
