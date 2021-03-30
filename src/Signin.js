@@ -1,5 +1,5 @@
-import React, { useReducer, useState } from 'react';
-import { firebaseApp, db, firebase } from './firebase'
+import React, { useState } from 'react';
+import { firebaseApp } from './firebase'
 
 function Signin() {
   const [email, setEmail] = useState("");

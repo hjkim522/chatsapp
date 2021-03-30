@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useState } from 'react';
 import { firebaseApp, db, firebase } from './firebase'
 
 function Signup() {
@@ -8,18 +8,17 @@ function Signup() {
   const cb = () => {
     firebaseApp.auth().createUserWithEmailAndPassword(email, password)
     .then((result) => {
-      //XXX: not transactional
+      //FIXME: not transactional
       console.log(result)
       db.collection('user')
       .add({
         uid: result.user.uid,
         email: result.user.email,
-        creaated: firebase.firestore.Timestamp.now().seconds
+        created: firebase.firestore.Timestamp.now().seconds
       })
       .then((ref) => {
         setEmail("");
         setPassword("");
-        //history.push('/signup');
       })
     })
     .catch((error) => {

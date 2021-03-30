@@ -1,10 +1,8 @@
-import { render } from "@testing-library/react";
 import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Signup from './Signup'
 import Signin from './Signin'
