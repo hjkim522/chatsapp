@@ -7,7 +7,7 @@ import {
 import Signup from './Signup'
 import Signin from './Signin'
 import Signout from './Signout'
-import StartChat from './StartChat'
+import CreateChat from './CreateChat'
 import Chats from './Chats'
 
 export default function App() {
@@ -24,13 +24,13 @@ export default function App() {
           <Signout />
         </Route>
         <Route exact path="/chats">
-          <StartChat />
+          <CreateChat />
         </Route>
         <Route exact path="/chats/:channel">
           <Chats />
         </Route>
         <Route exact path="/">
-          <StartChat />
+          <CreateChat />
         </Route>
       </Switch>
     </Router>
