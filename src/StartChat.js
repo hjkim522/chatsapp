@@ -1,30 +1,50 @@
+import React, { useState, useEffect } from 'react';
 import { firebaseApp } from './firebase'
 import { useHistory } from 'react-router-dom'
+import Signin from './Signin'
 
 function StartChat() {
+  const [channel, setChannel] = useState("");
+  const [initialized, setInitialzed] = useState(false);
+  const [user, setUser] = useState();
   let history = useHistory();
+
+  useEffect(() => {
+    console.log("initialized: " + initialized);
+  }, [initialized]);
 
   firebaseApp.auth().onAuthStateChanged(function(user) {
     if (user) {
-      // User is signed in.
       console.log(user);
+      setUser(user);
     } else {
-      // No user is signed in.
-      return (<div>not signed in.</div>) // not working because already returned haha
+      console.log("not signed in");
     }
+    setInitialzed(true);
   });
 
-  //displayName
   const cb = () => {
-    history.push("/signup");
+    //TODO: create a channel if not exist
+
+    history.push("/chats/" + channel);
   };
 
-  return (
-    <div>
-      <div><input></input></div>
-      <button className="button" onClick={cb}>Start</button>
-    </div>
-  );
+  if (!initialized) {
+    return (
+      <div>Loading...</div>
+    );
+  } else if (!user) {
+    return (
+      <Signin />
+    )
+  } else {
+    return (
+      <div>
+        <div>channel<input onChange={(event) => {setChannel(event.target.value)}} value={channel}></input></div>
+        <button className="button" onClick={cb}>Start</button>
+      </div>
+    )
+  }
 }
 
 export default StartChat;

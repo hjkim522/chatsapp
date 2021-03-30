@@ -13,7 +13,7 @@ function Signin() {
       console.log(result);
       setEmail("");
       setPassword("");
-      history.push("/start");
+      history.push("/chats");
     })
     .catch((error) => {
       console.log(error);
@@ -26,6 +26,7 @@ function Signin() {
       <div>email<input onChange={(event) => {setEmail(event.target.value)}} value={email}></input></div>
       <div>password<input onChange={(event) => {setPassword(event.target.value)}} value={password}></input></div>
       <button className="button" onClick={cb}>Sign in</button>
+      <button className="button" onClick={() => { history.push("/signup"); }}>Sign up</button>
     </div>
   );
 }

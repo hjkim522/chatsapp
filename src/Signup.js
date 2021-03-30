@@ -21,7 +21,7 @@ function Signup() {
       .then((ref) => {
         setEmail("");
         setPassword("");
-        history.push("/start");
+        history.push("/chats");
       })
     })
     .catch((error) => {
