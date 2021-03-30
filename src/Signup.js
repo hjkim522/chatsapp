@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { firebaseApp, db, firebase } from './firebase'
+import { useHistory } from 'react-router-dom'
 
 function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  let history = useHistory();
 
   const cb = () => {
     firebaseApp.auth().createUserWithEmailAndPassword(email, password)
@@ -19,6 +21,7 @@ function Signup() {
       .then((ref) => {
         setEmail("");
         setPassword("");
+        history.push("/start");
       })
     })
     .catch((error) => {

@@ -19,7 +19,7 @@ export default function App() {
         <Route exact path="/signin">
           <Signin />
         </Route>
-        <Route exact path="/start-chat">
+        <Route exact path="/start">
           <StartChat />
         </Route>
         <Route exact path="/chats">

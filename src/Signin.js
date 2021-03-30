@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { firebaseApp } from './firebase'
+import { useHistory } from 'react-router-dom'
 
 function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  let history = useHistory();
 
   const cb = () => {
     firebaseApp.auth().signInWithEmailAndPassword(email, password)
@@ -11,7 +13,7 @@ function Signin() {
       console.log(result);
       setEmail("");
       setPassword("");
-      alert('Successfully signed in!');
+      history.push("/start");
     })
     .catch((error) => {
       console.log(error);
