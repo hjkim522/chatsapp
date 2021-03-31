@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { firebaseApp } from './firebase'
 import { useHistory } from 'react-router-dom'
+import SigninView from './view/Signin'
 
-function Signin() {
+export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let history = useHistory();
 
-  const cb = () => {
+  const onSignin = () => {
     firebaseApp.auth().signInWithEmailAndPassword(email, password)
     .then((result) => {
       console.log(result);
@@ -22,13 +23,11 @@ function Signin() {
   }
 
   return (
-    <div>
-      <div>email<input onChange={(event) => {setEmail(event.target.value)}} value={email}></input></div>
-      <div>password<input onChange={(event) => {setPassword(event.target.value)}} value={password}></input></div>
-      <button className="button" onClick={cb}>Sign in</button>
-      <button className="button" onClick={() => { history.push("/signup"); }}>Sign up</button>
-    </div>
+    <SigninView
+      onSignin={onSignin}
+      email={email}
+      setEmail={setEmail}
+      password={password}
+      setPassword={setPassword} />
   );
 }
-
-export default Signin;

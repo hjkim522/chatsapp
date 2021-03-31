@@ -1,7 +1,7 @@
 import { firebaseApp } from './firebase'
 import { useHistory } from 'react-router-dom'
 
-function Signout() {
+export default function Signout() {
   let history = useHistory();
 
   firebaseApp.auth().signOut()
@@ -18,5 +18,3 @@ function Signout() {
     <div>Signing out...</div>
   );
 }
-
-export default Signout;

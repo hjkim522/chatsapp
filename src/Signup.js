@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { firebaseApp, db, firebase } from './firebase'
 import { useHistory } from 'react-router-dom'
+import SignupView from './view/Signup'
 
-function Signup() {
+export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let history = useHistory();
 
-  const cb = () => {
+  const onSignup = () => {
     firebaseApp.auth().createUserWithEmailAndPassword(email, password)
     .then((result) => {
       //FIXME: not transactional
@@ -31,12 +32,11 @@ function Signup() {
   }
 
   return (
-    <div>
-      <div>email<input onChange={(event) => {setEmail(event.target.value)}} value={email}></input></div>
-      <div>password<input onChange={(event) => {setPassword(event.target.value)}} value={password}></input></div>
-      <button className="button" onClick={cb}>Sign Up</button>
-    </div>
+    <SignupView
+      onSignup={onSignup}
+      email={email}
+      setEmail={setEmail}
+      password={password}
+      setPassword={setPassword} />
   );
 }
-
-export default Signup;
