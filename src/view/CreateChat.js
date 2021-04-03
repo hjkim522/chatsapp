@@ -68,8 +68,8 @@ export default function CreateChat(props) {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
-              </Link>
+              {/* <Link href="#" variant="body2">
+              </Link> */}
             </Grid>
             <Grid item>
               <Link href="/signout" variant="body2">

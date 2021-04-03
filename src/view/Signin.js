@@ -71,7 +71,9 @@ export default function SignIn(props) {
             value={props.password}
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox value="remember" color="primary"
+            checked={props.remember}
+            onChange={(event) => {props.setRemember(event.target.checked)}} />}
             label="Remember me"
           />
           <Button

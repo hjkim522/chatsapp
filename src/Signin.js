@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { firebaseApp } from './firebase'
+import { firebaseApp, firebase } from './firebase'
 import { useHistory } from 'react-router-dom'
 import SigninView from './view/Signin'
 
 export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
   let history = useHistory();
 
   const onSignin = () => {
+    firebaseApp.auth().setPersistence(remember ? firebase.auth.Auth.Persistence.LOCAL : firebase.auth.Auth.Persistence.SESSION)
     firebaseApp.auth().signInWithEmailAndPassword(email, password)
     .then((result) => {
       console.log(result);
@@ -28,6 +30,8 @@ export default function Signin() {
       email={email}
       setEmail={setEmail}
       password={password}
-      setPassword={setPassword} />
+      setPassword={setPassword}
+      remember={remember}
+      setRemember={setRemember} />
   );
 }
