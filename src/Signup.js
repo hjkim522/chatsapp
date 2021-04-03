@@ -31,7 +31,7 @@ export default function Signup() {
         uid: user.uid,
         email: user.email,
         displayName: user.displayName,
-        created: firebase.firestore.Timestamp.now().seconds
+        created: firebase.firestore.Timestamp.now()
       })
       .then((ref) => {
         setEmail("");

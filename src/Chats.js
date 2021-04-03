@@ -62,7 +62,7 @@ function Chats() {
       uid: user.uid,
       displayName: user.displayName,
       content: content,
-      created: firebase.firestore.Timestamp.now().seconds,
+      created: firebase.firestore.Timestamp.now(),
     })
     .then((ref) => {
       setContent("");
