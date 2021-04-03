@@ -7,7 +7,7 @@ import Message from './Message';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    height: '100%',
+    height: '100vh',
     width: '100%',
     padding: theme.spacing(1),
     //backgroundColor: theme.palette.background.default,
@@ -46,19 +46,17 @@ export default function Chats(props) {
 
   const msgRef = React.useRef(null);
   const scroll = React.useCallback(() => {
-    console.log("scroll");
     if (msgRef.current) {
       msgRef.current.scrollTop = msgRef.current.scrollHeight;
     }
   }, [msgRef]);
 
   React.useEffect(() => {
-    console.log("scroll2");
     scroll();
   }, [props.messages, scroll]);
 
   return (
-   <Container component="main" maxWidth="md">
+    <Container component="main" maxWidth="md">
       <CssBaseline />
       <Box>
         <div className={classes.container}>
