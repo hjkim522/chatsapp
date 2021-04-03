@@ -69,7 +69,7 @@ export default function Chats(props) {
   return (
     <Container component="main" maxWidth="md">
       <CssBaseline />
-      <Box>
+      <Box boxShadow={1}>
         <div className={classes.container}>
           <div className={classes.header}>
             <Header channel={props.channel} />
