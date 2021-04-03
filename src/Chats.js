@@ -60,6 +60,7 @@ function Chats() {
     db.collection("channel").doc(channel).collection("message")
     .add({
       uid: user.uid,
+      displayName: user.displayName,
       content: content,
       created: firebase.firestore.Timestamp.now().seconds,
     })

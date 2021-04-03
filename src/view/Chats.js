@@ -65,7 +65,7 @@ export default function Chats(props) {
           <div className={classes.messages} ref={msgRef}>
             {props.messages.map((msg) => {
               return (
-                <Message key={msg.id} user={msg.uid} content={msg.content} />
+                <Message key={msg.id} user={msg.displayName} content={msg.content} />
               );
             })}
           </div>

@@ -59,6 +59,8 @@ export default function SignUp(props) {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                onChange={(event) => {props.setFirstName(event.target.value)}}
+                value={props.firstName}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -70,6 +72,8 @@ export default function SignUp(props) {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                onChange={(event) => {props.setLastName(event.target.value)}}
+                value={props.lastName}
               />
             </Grid>
             <Grid item xs={12}>
