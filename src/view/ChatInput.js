@@ -22,6 +22,19 @@ const useStyles = makeStyles((theme) => ({
 export default function ChatInput(props) {
   const classes = useStyles();
 
+  const inputRef = React.useRef(null);
+
+  //TODO: useCallback
+  const handleKeyDown = (e => {
+    if (e.nativeEvent.isComposing) {
+      return;
+    }
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      props.onSend();
+    }
+  });
+
   return (
     <div className={classes.container}>
       <TextField
@@ -30,13 +43,14 @@ export default function ChatInput(props) {
         autoFocus
         multiline
         placeholder="Type a message to send..."
-        //inputProps={{ onKeyDown: handleKeyDown }}
+        inputProps={{ onKeyDown: handleKeyDown }}
         variant="outlined"
         rowsMax={10}
+        inputRef={inputRef}
       />
       <Button
         type="button"
-        onClick={props.onSend}
+        onClick={() => { inputRef.current.focus(); props.onSend(); }}
         //disabled={!props.content}
         variant="contained"
         color="primary"
