@@ -34,7 +34,7 @@ export default function CreateChat() {
       return;
     }
     //TODO: use interactive validation 
-    const channelRegexr = /^[a-z][a-z0-9]+$/gi;
+    const channelRegexr = /^[a-z][a-z0-9]*$/gi;
     if (!channelRegexr.test(channel)) {
       alert("invalid channel name");
       return;
